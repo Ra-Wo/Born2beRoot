@@ -3,7 +3,7 @@
 Architecture=$(uname -a)
 CPU_physical=$(cat /proc/cpuinfo | grep 'physical id' | uniq | wc -l)
 vCPU=$(cat /proc/cpuinfo | grep '^processor' | uniq | wc -l)
-Memory_Usage=$(free -m | awk '/Mem/ {printf("%s/%sMB (%.2f%%)  \n", $3, $2, $3*100/$2});')
+Memory_Usage=$(free -m | awk '/Mem/ {printf("%s/%sMB (%.2f%%)  \n", $3, $2, $3*100/$2)}')
 Disk_Usage=$(df -Bg | grep "^/dev" | grep -v "/boot" | awk '{a+=$2} {b+=$3} END {printf "%d/%dGb (%d%%)\n", b, a, b*100/a}')
 CPU_load=$(cat /proc/loadavg | awk '{printf "%.1f%%", $1 + $3}')
 Last_boot=$(who -b | awk '{print $3,$4}')
